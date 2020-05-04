@@ -110,7 +110,7 @@ project "Sandbox"
 	{
 		"Hazel/vendor/spdlog/include",
 		"Hazel/src",
-		"%{IncludeDir.ImGui}",
+		"Hazel/vendor",
 		"%{IncludeDir.glm}"
 	}
 
