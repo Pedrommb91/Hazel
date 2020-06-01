@@ -19,8 +19,8 @@ namespace Hazel {
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
-		//m_ImGuiLayer = new ImGuiLayer();
-		//PushOverlay(m_ImGuiLayer);
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
 
 	void Application::Run()
@@ -34,10 +34,10 @@ namespace Hazel {
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate(timestep);
 
-			/*m_ImGuiLayer->Begin();
+			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
 				layer->OnImGuiRender();
-			m_ImGuiLayer->end();*/
+			m_ImGuiLayer->end();
 
 			m_Window->OnUpdate();
 		}
@@ -60,13 +60,11 @@ namespace Hazel {
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
-		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
 		m_LayerStack.PushOverlay(layer);
-		layer->OnAttach();
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)
