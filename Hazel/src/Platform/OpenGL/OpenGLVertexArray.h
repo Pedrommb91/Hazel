@@ -20,7 +20,6 @@ namespace Hazel {
 		virtual const std::vector<Ref<VertexBuffer>>& GetVertexBuffers() const override { return m_VertexBuffers; }
 		virtual const Ref<IndexBuffer>& GetIndexBuffer() const override { return m_IndexBuffer; }
 
-		static VertexArray* Create();
 	private:
 		uint32_t m_RendererID;
 		uint32_t m_VertexBufferIndex = 0;
