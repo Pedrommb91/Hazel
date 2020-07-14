@@ -16,7 +16,7 @@ namespace Hazel {
 		virtual void OnDetach() override;
 
 		void Begin();
-		void end();
+		void End();
 	private:
 		float m_Time = 0.0f;
 	};
