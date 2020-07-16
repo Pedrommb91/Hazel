@@ -13,12 +13,12 @@ namespace Hazel {
 		Input(const Input&) = delete;
 		Input& operator=(const Input&) = delete;
 
-		inline static bool IsKeyPressed(KeyCode key) { return s_Instance->IsKeyPressedImpl(key); }
+		static bool IsKeyPressed(KeyCode key) { return s_Instance->IsKeyPressedImpl(key); }
 
-		inline static bool IsMouseButtonPressed(MouseCode button) { return s_Instance->IsMouseButtonPressedImpl(button); }
-		inline static std::pair<float, float> GetMousePosition() { return s_Instance->GetMousePositionImpl(); }
-		inline static float GetMouseX(int button) { return s_Instance->GetMouseXImpl(); }
-		inline static float GetMouseY(int button) { return s_Instance->GetMouseYImpl(); }
+		static bool IsMouseButtonPressed(MouseCode button) { return s_Instance->IsMouseButtonPressedImpl(button); }
+		static std::pair<float, float> GetMousePosition() { return s_Instance->GetMousePositionImpl(); }
+		static float GetMouseX(int button) { return s_Instance->GetMouseXImpl(); }
+		static float GetMouseY(int button) { return s_Instance->GetMouseYImpl(); }
 
 	protected:
 		virtual bool IsKeyPressedImpl(KeyCode key) = 0;
