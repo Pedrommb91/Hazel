@@ -8,7 +8,7 @@ workspace "Hazel"
 		"Release",
 		"Dist"
 	}
-
+	
 	flags
 	{
 		"MultiProcessorCompile"
@@ -37,7 +37,6 @@ project "Hazel"
 	language "C++"
 	cppdialect "C++17"
 	staticruntime "on"
-	
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -52,15 +51,16 @@ project "Hazel"
 		"%{prj.name}/vendor/stb_image/**.h",
 		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
-		"%{prj.name}/vendor/glm/glm/**.inl"
+		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 
 	defines
 	{
-		"_CRT_SECURE_NO_WARNINGS"
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE"
 	}
 
-	includedirs 
+	includedirs
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
@@ -71,12 +71,12 @@ project "Hazel"
 		"%{IncludeDir.stb_image}"
 	}
 
-	links
-	{
+	links 
+	{ 
 		"GLFW",
 		"Glad",
-		"opengl32.lib",
-		"ImGui"
+		"ImGui",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -84,9 +84,6 @@ project "Hazel"
 
 		defines
 		{
-			"HZ_PLATFORM_WINDOWS",
-			"HZ_BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
 		}
 
 	filter "configurations:Debug"
@@ -120,7 +117,7 @@ project "Sandbox"
 		"%{prj.name}/src/**.cpp"
 	}
 
-	includedirs 
+	includedirs
 	{
 		"Hazel/vendor/spdlog/include",
 		"Hazel/src",
@@ -135,12 +132,7 @@ project "Sandbox"
 
 	filter "system:windows"
 		systemversion "latest"
-
-		defines
-		{
-			"HZ_PLATFORM_WINDOWS",
-		}
-
+		
 	filter "configurations:Debug"
 		defines "HZ_DEBUG"
 		runtime "Debug"

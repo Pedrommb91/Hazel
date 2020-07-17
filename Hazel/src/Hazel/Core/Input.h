@@ -1,5 +1,6 @@
 #pragma once
-#include "Hazel/Core/Core.h"
+
+#include "Hazel/Core/Base.h"
 #include "Hazel/Core/KeyCodes.h"
 #include "Hazel/Core/MouseCodes.h"
 
@@ -17,9 +18,10 @@ namespace Hazel {
 
 		static bool IsMouseButtonPressed(MouseCode button) { return s_Instance->IsMouseButtonPressedImpl(button); }
 		static std::pair<float, float> GetMousePosition() { return s_Instance->GetMousePositionImpl(); }
-		static float GetMouseX(int button) { return s_Instance->GetMouseXImpl(); }
-		static float GetMouseY(int button) { return s_Instance->GetMouseYImpl(); }
+		static float GetMouseX() { return s_Instance->GetMouseXImpl(); }
+		static float GetMouseY() { return s_Instance->GetMouseYImpl(); }
 
+		static Scope<Input> Create();
 	protected:
 		virtual bool IsKeyPressedImpl(KeyCode key) = 0;
 
@@ -30,5 +32,4 @@ namespace Hazel {
 	private:
 		static Scope<Input> s_Instance;
 	};
-
 }

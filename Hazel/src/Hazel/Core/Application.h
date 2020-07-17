@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Hazel/Core/Core.h"
+#include "Hazel/Core/Base.h"
 
 #include "Hazel/Core/Window.h"
 #include "Hazel/Core/LayerStack.h"
@@ -27,7 +27,7 @@ namespace Hazel {
 		void PushOverlay(Layer* layer);
 
 		Window& GetWindow() { return *m_Window; }
-		
+
 		static Application& Get() { return *s_Instance; }
 	private:
 		void Run();
@@ -44,6 +44,8 @@ namespace Hazel {
 		static Application* s_Instance;
 		friend int ::main(int argc, char** argv);
 	};
-	//To be defined in client
+
+	// To be defined in CLIENT
 	Application* CreateApplication();
+
 }

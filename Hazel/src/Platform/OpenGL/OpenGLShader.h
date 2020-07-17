@@ -3,7 +3,7 @@
 #include "Hazel/Renderer/Shader.h"
 #include <glm/glm.hpp>
 
-//TODO: REMOVE!
+// TODO: REMOVE!
 typedef unsigned int GLenum;
 
 namespace Hazel {
@@ -13,7 +13,7 @@ namespace Hazel {
 	public:
 		OpenGLShader(const std::string& filepath);
 		OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc);
-		~OpenGLShader();
+		virtual ~OpenGLShader();
 
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
@@ -45,4 +45,5 @@ namespace Hazel {
 		uint32_t m_RendererID;
 		std::string m_Name;
 	};
+
 }

@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Hazel/Core/Core.h"
+#include "Hazel/Core/Base.h"
 
 namespace Hazel {
 
@@ -26,9 +26,6 @@ namespace Hazel {
 	public:
 		static Ref<Texture2D> Create(uint32_t width, uint32_t height);
 		static Ref<Texture2D> Create(const std::string& path);
-
 	};
-
-
 
 }

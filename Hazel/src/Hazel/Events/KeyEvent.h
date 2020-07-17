@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Hazel/Events/Event.h"
+#include "Hazel/Core/Input.h"
 
 namespace Hazel {
 
@@ -67,7 +68,5 @@ namespace Hazel {
 		}
 
 		EVENT_CLASS_TYPE(KeyTyped)
-	private:
-		int m_RepeatCount;
 	};
 }

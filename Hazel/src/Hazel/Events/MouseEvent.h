@@ -31,7 +31,7 @@ namespace Hazel {
 	{
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset)
-		: m_XOffset(xOffset), m_YOffset(yOffset) {}
+			: m_XOffset(xOffset), m_YOffset(yOffset) {}
 
 		float GetXOffset() const { return m_XOffset; }
 		float GetYOffset() const { return m_YOffset; }

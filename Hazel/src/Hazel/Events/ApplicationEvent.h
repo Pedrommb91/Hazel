@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Hazel/Events/Event.h"
 
 namespace Hazel {
@@ -36,6 +37,7 @@ namespace Hazel {
 
 	class AppTickEvent : public Event
 	{
+	public:
 		AppTickEvent() = default;
 
 		EVENT_CLASS_TYPE(AppTick)
@@ -50,7 +52,6 @@ namespace Hazel {
 		EVENT_CLASS_TYPE(AppUpdate)
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
-
 
 	class AppRenderEvent : public Event
 	{
