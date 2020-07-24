@@ -7,6 +7,8 @@
 
 #include <glm/glm.hpp>
 
+#include "Hazel/Scene/Entity.h"
+
 namespace Hazel {
 
 	static void DoMath(const glm::mat4& transform)
@@ -43,9 +45,13 @@ namespace Hazel {
 
 	}
 
-	entt::entity Scene::CreateEntity()
+	Entity Scene::CreateEntity(const std::string& name)
 	{
-		return m_Registry.create();
+		Entity entity = { m_Registry.create(), this };
+		entity.AddComponent<TransformComponent>();
+		auto& tag = entity.AddComponent<TagComponent>();
+		tag.Tag = name.empty() ? "Entity" : name;
+		return entity;
 	}
 
 	void Scene::OnUpdate(Timestep ts)
