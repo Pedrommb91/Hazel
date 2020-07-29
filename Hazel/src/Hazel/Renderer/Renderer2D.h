@@ -1,7 +1,7 @@
 #pragma once
 
+#include "Hazel/Renderer/Camera.h"
 #include "Hazel/Renderer/OrthographicCamera.h"
-
 #include "Hazel/Renderer/Texture.h"
 
 namespace Hazel {
@@ -9,10 +9,17 @@ namespace Hazel {
 	class Renderer2D
 	{
 	public:
+		struct RenderCamera
+		{
+			glm::mat4 Projection;
+			glm::mat4 View;
+		};
+
 		static void Init();
 		static void Shutdown();
 
-		static void BeginScene(const OrthographicCamera& camera);
+		static void BeginScene(const Camera& camera, const glm::mat4& transform);
+		static void BeginScene(const OrthographicCamera& camera); // TODO: Remove
 		static void EndScene();
 		static void Flush();
 
