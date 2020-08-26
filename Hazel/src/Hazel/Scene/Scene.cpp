@@ -11,14 +11,6 @@
 
 namespace Hazel {
 
-	static void DoMath(const glm::mat4& transform)
-	{
-
-	}
-
-	static void OnTransformconstruct(entt::registry& registry, entt::entity entity)
-	{}
-
 	Scene::Scene()
 	{
 #if ENNTT_EXAMPLE_CODE
@@ -56,6 +48,21 @@ namespace Hazel {
 
 	void Scene::OnUpdate(Timestep ts)
 	{
+		// Update scripts
+		{
+			m_Registry.view<NativeScriptComponent>().each([=](auto entity, auto& nsc)
+			{
+				if (!nsc.Instance)
+				{
+					nsc.InstantiateFunction();
+					nsc.Instance->m_Entity = Entity{ entity, this };
+					nsc.OnCreateFunction(nsc.Instance);
+				}
+				nsc.OnUpdateFunction(nsc.Instance, ts);
+			});
+		}
+
+
 		// Render 2D
 		Camera* mainCamera = nullptr;
 		glm::mat4* cameraTransform = nullptr;
